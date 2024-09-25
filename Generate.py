@@ -103,15 +103,16 @@ int_a = int(problem_11_1, 16)
 int_b = int(problem_11_2, 16)
 product = int_a * int_b
 binary_11 = format(product, '#010b')
-print(f"Solution to Problem #11 is: {problem_11_1} * {problem_11_2} = 0d{product} = {binary_11} = {hex(int(binary_11, 2))}")
+print(f"Solution to Problem #11 is: {problem_11_1.replace('0x0', '0x')} * {problem_11_2.replace('0x0', '0x')} = 0d{product} = {binary_11} = {hex(int(binary_11, 2))}")
 
 problem_12_1 = rand_bin(4, False, False)
 problem_12_2 = rand_bin(4, False, False)
 length = len(problem_12_1) + len(problem_12_2) - 2
+problem_12_1 = problem_12_1.replace('0b0', '0b')
+problem_12_2 = problem_12_2.replace('0b0', '0b')
 print(f"Solution to Problem #12 is: {break_bin(problem_12_1)} * {break_bin(problem_12_2)} = {break_bin(format(int(problem_12_1, 2) * int(problem_12_2, 2), f'#0{length}b'))}")
 
-latex_code = f'''
-\\documentclass[12pt]{{article}}
+latex_code = f'''\\documentclass[12pt]{{article}}
 \\usepackage[margin=1in]{{geometry}}
 \\usepackage[all]{{xy}}
 
@@ -140,7 +141,7 @@ latex_code = f'''
     \\item No notes, calculators, or any form of tool or information other than a pencil and the provided (test) paper.
     \\item Prefix all applicable answers with $\\mathtt{{0b}}$, $\\mathtt{{0d}}$, etc. to match the requested format.
     \\begin{{itemize}}
-        \\item For the "convert X to" problems, the format is specified.
+        \\item For the "convert X to Y" problems, the format is specified.
         \\item For all other problems, the format should match that given by the numbers in the problem.
         \\item Thus, if you convert from hexadecimal to binary to perform a bitwise logical/arithmetic operation, your answer must be converted back to hexadecimal.
     \\end{{itemize}}
@@ -236,7 +237,6 @@ latex_code = f'''
 \\end{{problem}}
 
 \\end{{document}}
-
 '''
 
 with open('test1.tex', 'w') as latex_file:
