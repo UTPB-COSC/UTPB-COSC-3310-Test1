@@ -112,6 +112,45 @@ problem_12_1 = problem_12_1.replace('0b0', '0b')
 problem_12_2 = problem_12_2.replace('0b0', '0b')
 print(f"Solution to Problem #12 is: {break_bin(problem_12_1)} * {break_bin(problem_12_2)} = {break_bin(format(int(problem_12_1, 2) * int(problem_12_2, 2), f'#0{length}b'))}")
 
+sa_questions = [
+    'Describe the role of the ALU within the CPU.  Give examples of six of the most basic operations handled by the ALU.',
+    'Explain the key differences between volatile and non-volatile memory. Provide examples of each type of memory and their typical uses in a computer system.',
+    'What is the function of the northbridge and southbridge in computer architecture, and how do they differ in terms of the components they manage?',
+    'Outline the steps involved in the FDE cycle. Why is this cycle fundamental to the operation of a CPU?',
+    'Why is the distinction between volatile and non-volatile memory important in terms of data storage and system functionality during power loss?',
+    'What is the purpose of the system clock in a computer\'s CPU, and how does it affect the timing and synchronization of operations within the processor?',
+    'RAM DIMMs are commonly sold in pairs, and the RAM slots on a motherboard are commonly arranged in pairs denoted A1,B1,A2,B2 or similar.  Why?'
+]
+
+sa_answers = [
+    'The Arithmetic Logic Unit (ALU) is a key component of the CPU responsible for performing arithmetic operations and logic operations.  The basic operations it handles are: the arithmetic operations (add, sub, mul, div) and the logical operations (and, or, xor, not, nand, nor, xnor).',
+    'Volatile memory loses its data when power is turned off, with RAM being a primary example, as it temporarily stores data that is actively being used by the CPU. Non-volatile memory, such as ROM or flash memory, retains data even when the system is powered down, making it useful for permanent storage of essential system instructions or user data.',
+    'The northbridge and southbridge are key components of a motherboard\'s chipset, with the northbridge managing communication between high-speed components like the CPU, RAM, and GPU, while the southbridge handles slower peripheral devices such as USB ports, hard drives, and audio. The northbridge facilitates faster data transfers crucial for system performance, whereas the southbridge ensures efficient handling of input/output operations.',
+    'The Fetch-Decode-Execute (FDE) cycle is the fundamental process by which a CPU executes instructions. During this cycle, the CPU fetches an instruction from memory, decodes it to understand the operation required, and then executes it, either performing a computation or interacting with memory or I/O devices. This cycle is continuous and forms the basis of program execution.',
+    'The distinction between volatile and non-volatile memory is important because volatile memory (e.g., RAM) loses its contents when the power is turned off, while non-volatile memory (e.g., flash storage or ROM) retains data even without power. This distinction ensures that critical system information and user data are preserved after a shutdown or power loss.',
+    'The system clock is responsible for providing the timing signals that synchronize all operations within the CPU and the broader system. It determines how fast instructions are executed by generating a steady stream of pulses, with each pulse coordinating the timing of the fetch-decode-execute cycle and communication between components.',
+    'Dual Inline Memory Modules are commonly sold in pairs because in order to actually provide Double Data Rate (DDR) transfer speeds, the system must pair the RAM modules and use them together as a single unit. Therefore, in order for them to correctly function a pair of identical DIMMs must be inserted into the A1 and A2 slots.'
+]
+
+mobo_list = [
+    'A',
+    'B',
+    'C',
+    'D',
+    'E'
+]
+
+p13_list = random.sample(mobo_list, 3)
+while 'D' not in p13_list and 'E' not in p13_list:
+    p13_list = random.sample(mobo_list, 3)
+p13_list.sort()
+problem_13 = f'{p13_list[0]}, {p13_list[1]}, and {p13_list[2]}'
+print(problem_13)
+
+p14_idx = random.randrange(len(sa_answers))
+problem_14 = sa_questions[p14_idx]
+print(f"Sample answer to Problem #14: {sa_answers[p14_idx]}")
+
 latex_code = f'''\\documentclass[12pt]{{article}}
 \\usepackage[margin=1in]{{geometry}}
 \\usepackage[all]{{xy}}
@@ -234,6 +273,19 @@ latex_code = f'''\\documentclass[12pt]{{article}}
 % Binary multiplication
 \\begin{{problem}}
 \\Large Find the product $\\mathtt{{{problem_12_1}}} * \\mathtt{{{problem_12_2}}}$.
+\\end{{problem}}
+
+\\newpage
+
+\\begin{{problem}}
+    \\large Identify and briefly describe the components labeled {problem_13}.
+    \\begin{{figure}}
+        \\includegraphics[width=0.7\\linewidth]{{Test_MB.png}}
+    \\end{{figure}}
+\\end{{problem}}
+
+\\begin{{problem}}
+    \\Large {problem_14}
 \\end{{problem}}
 
 \\end{{document}}
