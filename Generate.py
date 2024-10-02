@@ -82,7 +82,11 @@ problem_6_2 = rand_hex(20)
 print(f"Solution to Problem #6 is: {problem_6_1} + {problem_6_2} = {hex(int(problem_6_1, 16) + int(problem_6_2, 16))}")
 
 problem_7_1 = rand_bin()
+while int(problem_7_1, 2) < 28000:
+    problem_7_1 = rand_bin()
 problem_7_2 = rand_bin()
+while int(problem_7_2, 2) > int(problem_7_1, 2):
+    problem_7_2 = rand_bin()
 print(f"Solution to Problem #7 is: {break_bin(problem_7_1)} - {break_bin(problem_7_2)} = {break_bin(format(int(problem_7_1, 2) - int(problem_7_2, 2), '#018b'))}")
 
 problem_8_1 = rand_bin(negative=True)
@@ -95,7 +99,7 @@ print(f"Solution to Problem #9 is: {problem_9_1} xor {problem_9_2} = {hex(int(pr
 
 problem_10_1 = rand_decimal(16, True, False)
 problem_10_2 = rand_decimal(16, True, False)
-print(f"Solution to Problem #10 is: {problem_10_1} or {problem_10_2} = {(int(problem_10_1.lstrip('0d'), 10) | int(problem_10_2.lstrip('0d'), 10))}")
+print(f"Solution to Problem #10 is: {problem_10_1} or {problem_10_2} = 0d{(int(problem_10_1.lstrip('0d'), 10) | int(problem_10_2.lstrip('0d'), 10))}")
 
 problem_11_1 = rand_hex(4, False, False)
 problem_11_2 = rand_hex(4, False, False)
@@ -169,7 +173,7 @@ latex_code = f'''\\documentclass[12pt]{{article}}
 
 
 \\begin{{document}}
-\\noindent \\Large \\textbf{{COSC-3310}}  \\hfill \\textbf{{Midterm}}  \\hfill \\textbf{{Oct 02, 2024}}\\\\
+\\noindent \\Large \\textbf{{COSC-3310}}  \\hfill \\textbf{{Midterm}}  \\hfill \\textbf{{Oct 07, 2024}}\\\\
 
 \\vspace{{.3cm}}
 
